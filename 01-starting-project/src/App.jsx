@@ -5,8 +5,10 @@ import Header from "./components/Header/Header";
 import CoreConcept from "./components/CoreConcept/CoreConcept";
 import TabButton from "./components/CoreConcept/TabButton";
 
+import { EXAMPLES } from "./data";
+
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState("Please click a button");
+  const [selectedTopic, setSelectedTopic] = useState("components");
 
   function handleClick(selectedButton) {
     setSelectedTopic(selectedButton);
@@ -40,7 +42,13 @@ function App() {
             <TabButton onClick={() => handleClick("props")}>Props</TabButton>
             <TabButton onClick={() => handleClick("state")}>State</TabButton>
           </menu>
-          {selectedTopic}
+          <div>
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>{EXAMPLES[selectedTopic].code}</code>
+            </pre>
+          </div>
         </section>
       </main>
     </div>
